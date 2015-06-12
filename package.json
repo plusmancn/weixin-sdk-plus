@@ -1,0 +1,24 @@
+{
+  "name": "weixin-sdk-plus",
+  "version": "0.0.8",
+  "description": "Wrap weixin api in node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weixin-sdk"
+  ],
+  "dependencies": {
+    "request": "2.57.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Treri/passport-weixin.git"
+  },
+  "author": "plusmancn",
+  "license": "ISC",
+  "devDependencies": {
+    "should": "^6.0.3"
+  }
+}
