@@ -18,4 +18,3 @@ var weixin = require('weixin-sdk-plus')('测试公众号','wxf4697d97090dcadb','
 weixin.getToken(function(err,data){
   console.log('local',err,data);
 });
-
