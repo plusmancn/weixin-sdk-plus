@@ -8,7 +8,6 @@
   * access_token maintain
   * oauth2 grant & get userinfo
 
-  
 ## Get started
 
 **Initialization**
