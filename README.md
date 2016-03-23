@@ -1,11 +1,13 @@
->Using exports cacahe store weixin accout info.
+# weixin-sdk-plus
+[![weixin-sdk-plus](http://img.shields.io/npm/v/weixin-sdk-plus.svg)](https://www.npmjs.org/package/weixin-sdk-plus)
+
+> Using exports cacahe store weixin accout info.
 
 ## features
 
   * access_token maintain
   * oauth2 grant & get userinfo
 
-  
 ## Get started
 
 **Initialization**
