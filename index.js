@@ -1,15 +1,47 @@
 'use strict'
-module.exports = function init (appName,appId,appSecret) {
-  // 利用 node 的 exports 缓存，进行文件的初始化
-  var weixinAccount = require('./config/config').weixin.account;
-  weixinAccount.appName = appName;
-  weixinAccount.appId = appId;
-  weixinAccount.appSecret = appSecret;
 
-  return {
-    'access_token':require('./lib/access_token'),
-    'user_info':require('./lib/user_info')
-  }
+var util = require('util');
+var wxConfig = require('./config/weixin.json');
+var request = require('request');
+
+/**
+ * 微信 API Node 对象封装
+ */
+function Weixin(name, appId, appSecret, options){
+    let self = this;
+    self.name = name;
+    self.appId = appId;
+    self.appSecret = appSecret;
+    self.oAuth2AuthorizePath = util.format(wxConfig.api.oAuth2Authorize, self.appId)
 }
 
 
+/**
+ * [Sync] 获取基础认证URL，静默授权
+ */
+Weixin.prototype.getBaseUrlSync = function(wxCallbackUrl){
+    var self = this;
+    let url = util.format(self.oAuth2AuthorizePath, encodeURIComponent(wxCallbackUrl), wxConfig.scope[1]);
+    return url;
+}
+
+/**
+ * Token 置换
+ */
+Weixin.prototype.switchToken = function(code){
+    var self = this;
+    var oAuth2AccessTokenUrl = util.format(wxConfig.api.oAuth2AccessToken, self.appId, self.appSecret, code);
+    return new Promise(function(resolve, reject){
+        request({
+            url: oAuth2AccessTokenUrl,
+            method: 'GET',
+            json: true
+        }, function(err, resp, body){
+            if(err) reject(err);
+            resolve(body);
+        });
+    });
+}
+
+
+module.exports = Weixin;

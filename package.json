@@ -1,6 +1,6 @@
 {
   "name": "weixin-sdk-plus",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Wrap weixin api in node.js",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "weixin-sdk"
   ],
   "dependencies": {
+    "co": "^4.6.0",
     "request": "2.57.0"
   },
   "repository": {
