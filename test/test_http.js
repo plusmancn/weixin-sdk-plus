@@ -30,7 +30,7 @@ var server = http.createServer(function(req,res){
         let callbackUrl = 'http://' + req.headers.host + '/oauth2/weixin/';
         // user_info.getUserinfo(callbackUrl,redirectFunc);
         // user_info.getBase(callbackUrl, redirectFunc);
-        let goWxUrl = weixin.getBaseUrlSync(callbackUrl);
+        let goWxUrl = weixin.getBaseUrlSync(callbackUrl, 'snsapi_base');
         res.writeHead(302,{'Location':goWxUrl});
         res.end();
     }

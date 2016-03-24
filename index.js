@@ -18,10 +18,13 @@ function Weixin(name, appId, appSecret, options){
 
 /**
  * [Sync] 获取基础认证URL，静默授权
+ *
+ * scope 0 snsapi_base
+ *       1 snsapi_userinfo
  */
-Weixin.prototype.getBaseUrlSync = function(wxCallbackUrl){
+Weixin.prototype.getBaseUrlSync = function(wxCallbackUrl, scope){
     var self = this;
-    let url = util.format(self.oAuth2AuthorizePath, encodeURIComponent(wxCallbackUrl), wxConfig.scope[1]);
+    let url = util.format(self.oAuth2AuthorizePath, encodeURIComponent(wxCallbackUrl), scope);
     return url;
 }
 

@@ -6,7 +6,7 @@
 ## Get started
 **Initialization**
 ```javascript
-var weixin = new Weixin('测试公众号','wxf4697d97090dcadb','fe1f4e4f356d17b63b7d3fd76706e902')
+var weixin = new Weixin('测试公众号','wxf4697d97090dcadb','fe1f4e4f356d17b63b7d3fd76706e902');
 ```
 
 ## Test
@@ -42,7 +42,8 @@ var server = http.createServer(function(req,res){
         });
     }else{
         let callbackUrl = 'http://' + req.headers.host + '/oauth2/weixin/';
-        let goWxUrl = weixin.getBaseUrlSync(callbackUrl);
+        // 默认类型为snsapi_base
+        let goWxUrl = weixin.getBaseUrlSync(callbackUrl, 'snsapi_base');
         res.writeHead(302,{'Location':goWxUrl});
         res.end();
     }
@@ -59,30 +60,30 @@ server.listen(80);
 ## Wechat Data Response
 `Denpend on your wechat privilege, unionid may be not exists.`    
 **snsapi_base**
-
-    {
-       "access_token":"ACCESS_TOKEN",
-       "expires_in":7200,
-       "refresh_token":"REFRESH_TOKEN",
-       "openid":"OPENID",
-       "scope":"snsapi_userinfo",
-       "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-    }
-
+```json
+{
+  "access_token": "",
+  "expires_in": 7200,
+  "refresh_token": "",
+  "openid": "",
+  "scope": "snsapi_base"
+}
+```
 
 **snsapi_userinfo**
-
-    {
-      "openid":" OPENID",
-      " nickname": NICKNAME,
-      "sex":"1",
-      "province":"PROVINCE"
-      "city":"CITY",
-      "country":"COUNTRY",
-      "headimgurl":"http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46", 
-      "privilege":[
-        "PRIVILEGE1"
-        "PRIVILEGE2"
-      ],
-      "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-    }
+```json
+{
+  "openid":" OPENID",
+  " nickname": NICKNAME,
+  "sex":"1",
+  "province":"PROVINCE"
+  "city":"CITY",
+  "country":"COUNTRY",
+  "headimgurl":"http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46", 
+  "privilege":[
+    "PRIVILEGE1"
+    "PRIVILEGE2"
+  ],
+  "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+}
+```
