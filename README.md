@@ -69,21 +69,3 @@ server.listen(80);
   "scope": "snsapi_base"
 }
 ```
-
-**snsapi_userinfo**
-```json
-{
-  "openid":" OPENID",
-  " nickname": NICKNAME,
-  "sex":"1",
-  "province":"PROVINCE"
-  "city":"CITY",
-  "country":"COUNTRY",
-  "headimgurl":"http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46", 
-  "privilege":[
-    "PRIVILEGE1"
-    "PRIVILEGE2"
-  ],
-  "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-}
-```
